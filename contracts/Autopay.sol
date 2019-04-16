@@ -63,10 +63,6 @@ contract Autopay is Ownable {
 		delete _allEmployees[index];
 	}
 
-	/*
-	   This function will burn lots of gas if you have lots of employees,
-	   call at your own risk
-	 */
 	function removeEmployeeByAddress(address employeeAddress) public onlyOwner {
 		if (_employeeByAddress[employeeAddress].paymentAddress == employeeAddress) {
 			delete _employeeByAddress[employeeAddress];
