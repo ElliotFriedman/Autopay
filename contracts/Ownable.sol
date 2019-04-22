@@ -86,7 +86,7 @@ contract Ownable {
     }
     
     function takeOwnership() public onlyNewOwner {
-		address oldOwner = _newOwner;
+		address oldOwner = _owner;
 		_owner = _newOwner;
 		_newOwner = address(0);
 		
