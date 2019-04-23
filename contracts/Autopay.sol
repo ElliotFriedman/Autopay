@@ -1,43 +1,6 @@
 pragma solidity ^0.5.4;
 
-/*
-
-   Permissioning system. If your HR employee leaves you should be able to 
-   change the private keys on who can change this smart contract
-
- */
-
-contract Ownable {
-	address private _owner;
-	address private _newOwner;
-
-	event LogOwnershipTransferred(address indexed newOwner);
-
-	constructor () internal {
-		_owner = msg.sender;
-	}
-
-	modifier onlyOwner {
-		require(msg.sender == _owner);
-		_;	
-	}
-
-	modifier onlyNewOwner {
-		require(msg.sender == _newOwner);
-		_;
-	}
-
-	function initiateOwnershipTransfer(address newOwner) onlyOwner public {
-		_newOwner = newOwner;
-	}
-
-	function takeOwnership() onlyNewOwner public {
-		_owner = _newOwner;
-		_newOwner = address(0);
-		emit LogOwnershipTransferred(_owner);
-		assert(_owner == msg.sender);
-	}
-}
+import "./Ownable.sol";
 
 contract Autopay is Ownable {
 
