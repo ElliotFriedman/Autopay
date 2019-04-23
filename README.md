@@ -52,3 +52,11 @@ mapping (address => Employee) private _employeeByAddress;
 ```
 
 That's all for our data structures.
+
+### Files Explained
+
+There are both generic and specialized use cases included in this repository. Autopay.sol is customized for a single owner while the stateless versions are for when you would like to transfer tokens and ether without having a contract owner.
+
+#### Caution
+
+If you use stateless erc20 token transfer be warned as you will have to send tokens to the contract before you can send them to your recipients which opens you up to COMPLETE LOSS of funds if someone can get their transaction to transfer your tokens confirmed before you can.
